@@ -20,7 +20,13 @@ if ENV['COVERAGE']
   end
 end
 
-ENV['DATABASE_URL'] ||= "sqlite3:test_db"
+DB_USER='root'
+DB_PASSWORD=''
+DB_HOST='127.0.0.1'
+DB_PORT='3306'
+DB_NAME='jsonapi-resources_test'
+DATABASE_URL = "mysql2://#{DB_USER}:#{DB_PASSWORD}@#{DB_HOST}:#{DB_PORT}/#{DB_NAME}"
+ENV['DATABASE_URL'] ||= DATABASE_URL
 
 require 'active_record/railtie'
 require 'rails/test_help'
